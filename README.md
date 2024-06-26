@@ -209,7 +209,24 @@ blur_size = (3,3)
 binarize  = False
 threshold = 127
 </pre>
+In this configuration file above, we added the following parameters to enable <b>epoch_change_infer</b> callback in [train] section.<br>
+<pre>
+[train]
+;Inference execution flag on epoch_changed
+epoch_change_infer     = True
+; Output dir to save the inferred masks on epoch_changed
+epoch_change_infer_dir =  "./epoch_change_infer"
 
+; The number of the images to be inferred on epoch_changed.
+num_infer_images       = 1
+</pre>
+
+By using this callback, on every epoch_change, the inference procedures can be called
+ for an image in <b>mini_test</b> folder.<br><br>
+<b>Epoch_change_inference output</b><br>
+<img src="./projects/TensorflowSlightlyFlexibleUNet/MoNuSeg/asset/epoch_change_infer.png" width="1024" height="auto"><br>
+<br>
+<br>
 The training process has just been stopped at epoch 57 by EarlyStopping Callback as shown below.<br><br>
 <img src="./projects/TensorflowSlightlyFlexibleUNet/MoNuSeg/asset/train_console_output_at_epoch_57.png" width="720" height="auto"><br>
 <br>
